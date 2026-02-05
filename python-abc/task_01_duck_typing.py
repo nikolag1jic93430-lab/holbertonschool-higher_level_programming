@@ -2,6 +2,7 @@
 from abc import ABC, abstractmethod
 import math
 
+
 # Abstract class
 class Shape(ABC):
     @abstractmethod
