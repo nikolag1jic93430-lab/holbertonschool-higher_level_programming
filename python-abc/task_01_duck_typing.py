@@ -1,10 +1,12 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+
+
 from abc import ABC, abstractmethod
-import math
+from math import pi
 
 
-# Abstract class
 class Shape(ABC):
+    """ Abstract class Shape """
     @abstractmethod
     def area(self):
         pass
@@ -13,20 +15,23 @@ class Shape(ABC):
     def perimeter(self):
         pass
 
-# Concrete class Circle
+
 class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
 
     def area(self):
-        return math.pi * abs(self.radius) ** 2
-
+        return pi * self.radius ** 2
 
     def perimeter(self):
-        return 2 * math.pi * self.radius
+        res = 2 * pi * self.radius
+        if res < 0:
+            res = -res
+        return res
 
-# Concrete class Rectangle
+
 class Rectangle(Shape):
+    """ sub class Rectangle"""
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -35,9 +40,12 @@ class Rectangle(Shape):
         return self.width * self.height
 
     def perimeter(self):
-        return 2 * (self.width + self.height)
+        res = 2 * (self.width + self.height)
+        if res < 0:
+            res = -res
+        return res
 
-# Standalone function using duck typing
+
 def shape_info(shape):
     print(f"Area: {shape.area()}")
     print(f"Perimeter: {shape.perimeter()}")
